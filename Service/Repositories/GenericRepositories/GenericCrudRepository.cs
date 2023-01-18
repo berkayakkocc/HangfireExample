@@ -228,11 +228,7 @@ namespace Service.Repositories.GenericRepositories
 
 
 
-
-
-
-
-
+        #region Update
         public async Task Update(TEntity entity)
         {
             entity.UpdatedDate = DateTime.Now;
@@ -243,7 +239,7 @@ namespace Service.Repositories.GenericRepositories
             //  await _transaction.CommitAsync();
         }
 
-        public Task UpdateMany(List<TEntity> entities, bool deleted = false)
+        public async Task UpdateMany(List<TEntity> entities, bool deleted = false)
         {
             if (!deleted)
                 foreach (var entity in entities)
@@ -292,7 +288,13 @@ namespace Service.Repositories.GenericRepositories
                 RollbackTransactionAsync();
             }
         }
+        #endregion
 
-      
+
+
+
+
+
+
     }
 }
