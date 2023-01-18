@@ -1,3 +1,4 @@
+using API.Middleware;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 //Automapper
-//Injection
+builder.Services.AddInjections();
+
 IConfiguration _configuration = new ConfigurationBuilder()
                             .AddJsonFile("appsettings.json")
                             .Build();
