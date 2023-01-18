@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-//Automapper
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddInjections();
 
 IConfiguration _configuration = new ConfigurationBuilder()
