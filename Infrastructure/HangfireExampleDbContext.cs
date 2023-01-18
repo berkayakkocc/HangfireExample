@@ -1,4 +1,5 @@
-﻿using Core.Models.Entity;
+﻿using Core.Models.CommonEntity;
+using Core.Models.Entity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,5 +22,29 @@ namespace Infrastructure
         }
         public DbSet<Song> Songs { get; set; }
         public DbSet<Singer> Singers { get; set; }
+
+        public override int SaveChanges()
+        {
+            var entries = ChangeTracker
+                .Entries()
+                .Where(e => e.Entity is BaseEntityDetail && (
+                        e.State == EntityState.Added
+                        || e.State == EntityState.Modified));
+
+
+            foreach (var entityEntry in entries)
+            {
+                if (entityEntry.State == EntityState.Added)
+                {
+                    ((BaseEntityDetail)entityEntry.Entity).CreatedDate = DateTime.Now;
+                }
+                else
+                {
+                    ((BaseEntityDetail)entityEntry.Entity).UpdatedDate = DateTime.Now;
+                }
+            }
+
+            return base.SaveChanges();
+        }
     }
 }
