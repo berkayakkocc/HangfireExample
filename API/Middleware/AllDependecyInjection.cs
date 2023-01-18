@@ -1,4 +1,5 @@
 ﻿using Core.Interfaces.GenericInterface;
+using Core.Interfaces.Jobs;
 using Core.Interfaces.PageInterface;
 using Service;
 using Service.Repositories.GenericRepositories;
@@ -16,6 +17,7 @@ namespace API.Middleware
             #region Service
             services.AddScoped<ISingerService, SingerService>();
             services.AddScoped<ISongService, SongService>();
+            services.AddScoped<IJobService, JobService>();
             #endregion
             return services;
         }
