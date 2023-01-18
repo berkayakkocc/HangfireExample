@@ -1,6 +1,8 @@
-﻿namespace Core.Models.Entity
+﻿using Core.Models.CommonEntity;
+
+namespace Core.Models.Entity
 {
-    public class Singer
+    public class Singer:BaseEntity
     {
         public string Name { get; set; }
         public int BornDate { get; set; }
