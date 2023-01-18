@@ -8,7 +8,7 @@ namespace Core.Models.Entity
         public int BornDate { get; set; }
         public int Age { get; set; }
 
-        public ICollection<Song> Songs { get; set; }
+        public virtual ICollection<Song> Songs { get; set; }
 
     }
 }
